@@ -5,13 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ title|default('英会話学校予約システム') }}</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link href="{{ base_url() }}assets/css/school-theme.css" rel="stylesheet">
 </head>
 <body>
-  {# TODO: ヘッダー #}
+  <div class="alphabet-decoration" aria-hidden="true">
+    <span class="letter letter-a">A</span>
+    <span class="letter letter-b">B</span>
+    <span class="letter letter-c">C</span>
+    <span class="letter letter-x">X</span>
+    <span class="letter letter-y">Y</span>
+    <span class="letter letter-z">Z</span>
+  </div>
+
+  <header class="site-header">
+    <a class="site-brand" href="{{ base_url() }}">
+      <span class="site-brand__mark">E</span>
+      <span>
+        <strong>ENGLISH CLASS</strong>
+        <small>Lesson Reservation</small>
+      </span>
+    </a>
+    <a class="site-header__reserve" href="{{ base_url() }}search">レッスンを予約</a>
+  </header>
 
   {% block main %}{% endblock main %}
 
-  {# TODO: フッター #}
+  <footer class="site-footer">
+    <small>&copy; {{ "now"|date("Y") }} English Class Reservation</small>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   {% block js %}{% endblock js %}

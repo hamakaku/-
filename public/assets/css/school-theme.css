@@ -1,0 +1,280 @@
+:root {
+  --school-blue: #075fb8;
+  --school-navy: #092752;
+  --school-cyan: #25a9e8;
+  --school-white: rgba(255, 255, 255, 0.93);
+  --school-shadow: 0 22px 60px rgba(7, 43, 89, 0.22);
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: #17304f;
+  background:
+    linear-gradient(115deg, rgba(247, 251, 255, 0.42), rgba(216, 236, 255, 0.18)),
+    url("../img/school-background.png") center top / cover fixed no-repeat;
+  font-family: "Yu Gothic UI", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(224, 240, 255, 0.42));
+  pointer-events: none;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem clamp(1rem, 4vw, 4rem);
+  color: #fff;
+  background: rgba(6, 38, 81, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 30px rgba(0, 35, 82, 0.18);
+  backdrop-filter: blur(12px);
+}
+
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.site-brand:hover {
+  color: #fff;
+}
+
+.site-brand__mark {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  color: var(--school-navy);
+  background: #fff;
+  border-radius: 0.8rem 0.2rem 0.8rem 0.2rem;
+  font: 800 1.65rem/1 Georgia, serif;
+  transform: rotate(-4deg);
+}
+
+.site-brand strong,
+.site-brand small {
+  display: block;
+  letter-spacing: 0.08em;
+}
+
+.site-brand small {
+  margin-top: 0.1rem;
+  color: #bfe7ff;
+  font-size: 0.72rem;
+}
+
+.site-header__reserve {
+  padding: 0.6rem 1rem;
+  color: #fff;
+  background: linear-gradient(135deg, #258fe2, #0b6fc9);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-header__reserve:hover {
+  color: #fff;
+  background: #1684dd;
+  transform: translateY(-1px);
+}
+
+main,
+main.container {
+  position: relative;
+  z-index: 2;
+  width: min(92%, 880px);
+  max-width: 880px !important;
+  margin: clamp(2rem, 6vw, 5rem) auto;
+  padding: clamp(1.5rem, 4vw, 3rem) !important;
+  overflow: hidden;
+  background: var(--school-white);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 1.5rem;
+  box-shadow: var(--school-shadow);
+  backdrop-filter: blur(12px);
+}
+
+main::before {
+  content: "ENGLISH  •  COMMUNICATION  •  DISCOVERY";
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--school-blue);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--school-navy);
+  font-weight: 800;
+}
+
+h1 {
+  margin-bottom: 1.2rem;
+  font-size: clamp(1.8rem, 4vw, 2.65rem);
+}
+
+label,
+legend,
+dt {
+  color: #193b65;
+  font-weight: 700;
+}
+
+.form-control,
+.form-select,
+input,
+select,
+textarea {
+  min-height: 2.9rem;
+  border-color: #b9d5ee !important;
+  border-radius: 0.7rem !important;
+  background-color: rgba(255, 255, 255, 0.92) !important;
+}
+
+.form-control:focus,
+.form-select:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--school-cyan) !important;
+  box-shadow: 0 0 0 0.22rem rgba(37, 169, 232, 0.18) !important;
+}
+
+fieldset input[type="number"] {
+  width: 7rem;
+  max-width: 24%;
+  padding: 0.45rem 0.6rem;
+}
+
+.card {
+  border-color: #c9def1;
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(30, 91, 148, 0.08);
+}
+
+main > a,
+main form button[type="submit"],
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.9rem;
+  margin: 0.35rem 0.35rem 0.35rem 0;
+  padding: 0.7rem 1.25rem;
+  color: #fff !important;
+  background: linear-gradient(135deg, #158fe3, #075fb8) !important;
+  border: 0 !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 8px 20px rgba(5, 95, 184, 0.2);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+main > a:hover,
+main form button[type="submit"]:hover,
+.btn-primary:hover {
+  color: #fff;
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+.alphabet-decoration {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.letter {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 800;
+  line-height: 1;
+  text-shadow: 0 8px 26px rgba(9, 63, 122, 0.2);
+  user-select: none;
+}
+
+.letter-a { top: 16%; left: 3%; font-size: clamp(5rem, 12vw, 11rem); transform: rotate(-12deg); }
+.letter-b { top: 47%; left: 7%; font-size: clamp(3.5rem, 8vw, 7rem); transform: rotate(8deg); }
+.letter-c { bottom: 4%; left: 20%; font-size: clamp(4rem, 9vw, 8rem); transform: rotate(-5deg); }
+.letter-x { top: 13%; right: 7%; font-size: clamp(3.5rem, 8vw, 7rem); transform: rotate(9deg); }
+.letter-y { top: 44%; right: 3%; font-size: clamp(5rem, 11vw, 10rem); transform: rotate(-10deg); }
+.letter-z { bottom: 3%; right: 18%; font-size: clamp(4rem, 9vw, 8rem); transform: rotate(6deg); }
+
+.site-footer {
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem;
+  color: #173c68;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  body {
+    background-position: 64% top;
+    background-attachment: scroll;
+  }
+
+  .site-header {
+    padding: 0.7rem 0.9rem;
+  }
+
+  .site-brand strong {
+    font-size: 0.9rem;
+  }
+
+  .site-brand small,
+  .site-header__reserve {
+    font-size: 0.7rem;
+  }
+
+  main,
+  main.container {
+    width: calc(100% - 1.25rem);
+    margin: 1rem auto 2rem;
+    padding: 1.25rem !important;
+    border-radius: 1rem;
+  }
+
+  .letter {
+    opacity: 0.55;
+  }
+
+  fieldset input[type="number"] {
+    width: 5.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
