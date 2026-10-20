@@ -385,6 +385,288 @@ form a:not(.site-brand):not(.site-header__reserve):hover {
   border-color: var(--school-blue);
 }
 
+.registration-page {
+  width: min(94%, 1180px);
+  max-width: 1180px !important;
+}
+
+.registration-page::before {
+  display: none;
+}
+
+.page-heading {
+  max-width: 760px;
+  margin-bottom: 1.75rem;
+}
+
+.page-heading__eyebrow {
+  margin: 0 0 0.45rem;
+  color: var(--school-blue);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.page-heading > p:last-child {
+  margin-bottom: 0;
+  color: var(--school-muted);
+}
+
+.booking-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin: 0 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.booking-steps li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: #75869a;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.booking-steps li:not(:last-child)::after {
+  content: "";
+  height: 2px;
+  flex: 1;
+  margin-right: 0.55rem;
+  background: #d5e4ef;
+}
+
+.booking-steps span {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  place-items: center;
+  background: #e7eff6;
+  border-radius: 50%;
+  font-size: 0.76rem;
+}
+
+.booking-steps .is-current {
+  color: var(--school-blue);
+}
+
+.booking-steps .is-current span {
+  color: #fff;
+  background: linear-gradient(135deg, var(--school-sky), var(--school-blue));
+  box-shadow: 0 5px 14px rgba(8, 107, 191, 0.25);
+}
+
+.registration-layout {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.72fr) minmax(0, 1.8fr);
+  align-items: start;
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+}
+
+.registration-aside {
+  position: sticky;
+  top: 96px;
+  display: grid;
+  gap: 1rem;
+}
+
+.reservation-summary,
+.registration-guide {
+  padding: 1.3rem;
+  border-radius: 1rem;
+}
+
+.reservation-summary {
+  color: #fff;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(77, 192, 245, 0.45), transparent 38%),
+    linear-gradient(145deg, #0b3a70, #071f43);
+  box-shadow: 0 16px 34px rgba(8, 43, 84, 0.23);
+}
+
+.reservation-summary__label {
+  margin: 0 0 0.3rem;
+  color: #8ed8ff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.reservation-summary h2 {
+  margin: 0 0 1rem;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.reservation-summary dl,
+.reservation-summary dd {
+  margin: 0;
+}
+
+.reservation-summary dl > div {
+  padding: 0.72rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.reservation-summary dt {
+  margin-bottom: 0.12rem;
+  color: #9edcff;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.reservation-summary dd {
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.registration-guide {
+  background: rgba(239, 248, 255, 0.84);
+  border: 1px solid var(--school-line);
+}
+
+.registration-guide h2 {
+  margin: 0 0 0.65rem;
+  font-size: 1rem;
+}
+
+.registration-guide ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: #526b83;
+  font-size: 0.83rem;
+}
+
+.registration-guide li + li {
+  margin-top: 0.35rem;
+}
+
+.registration-form-panel {
+  min-width: 0;
+}
+
+.member-form {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 0 !important;
+}
+
+.form-section {
+  padding: clamp(1.15rem, 2.5vw, 1.65rem);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--school-line);
+  border-radius: 1.1rem;
+  box-shadow: 0 8px 22px rgba(19, 73, 124, 0.06);
+}
+
+.form-section__heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid #dbe9f3;
+}
+
+.form-section__heading > span {
+  display: grid;
+  width: 2.2rem;
+  height: 2.2rem;
+  flex: 0 0 auto;
+  place-items: center;
+  color: #fff;
+  background: var(--school-blue);
+  border-radius: 0.7rem 0.2rem 0.7rem 0.2rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.form-section__heading h2,
+.form-section__heading p {
+  margin: 0;
+}
+
+.form-section__heading h2 {
+  font-size: 1.15rem;
+}
+
+.form-section__heading p {
+  margin-top: 0.12rem;
+  color: var(--school-muted);
+  font-size: 0.82rem;
+}
+
+.form-grid {
+  display: grid;
+  gap: 1rem 1.15rem;
+}
+
+.form-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.form-grid .form-group {
+  min-width: 0;
+  margin: 0;
+}
+
+.form-grid__wide {
+  grid-column: 1 / -1;
+}
+
+.required-badge {
+  display: inline-block;
+  margin-left: 0.25rem;
+  padding: 0.06rem 0.4rem;
+  color: #fff;
+  background: var(--school-danger);
+  border-radius: 999px;
+  font-size: 0.66rem;
+  line-height: 1.55;
+  vertical-align: 0.08em;
+}
+
+.birthday-fields {
+  display: block !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.birthday-fields > div {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.birthday-fields input[type="number"] {
+  width: min(7rem, 25%);
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0 0;
+}
+
+.form-actions p {
+  margin: 0;
+  color: var(--school-muted);
+  font-size: 0.84rem;
+}
+
+.form-actions .btn {
+  min-width: 13rem;
+  margin: 0;
+}
+
 .alphabet-decoration {
   position: fixed;
   inset: 0;
@@ -417,6 +699,17 @@ form a:not(.site-brand):not(.site-header__reserve):hover {
   color: #173c68;
   text-align: center;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 900px) {
+  .registration-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .registration-aside {
+    position: static;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 640px) {
@@ -465,6 +758,74 @@ form a:not(.site-brand):not(.site-header__reserve):hover {
   main::before {
     font-size: 0.6rem;
     letter-spacing: 0.12em;
+  }
+
+  .page-heading {
+    margin-bottom: 1.3rem;
+  }
+
+  .booking-steps {
+    margin-bottom: 1.35rem;
+  }
+
+  .booking-steps li {
+    display: grid;
+    justify-items: center;
+    gap: 0.25rem;
+    text-align: center;
+    font-size: 0.66rem;
+  }
+
+  .booking-steps li:not(:last-child)::after {
+    position: absolute;
+    top: 1rem;
+    left: calc(50% + 1rem);
+    width: calc(100% - 2rem);
+    margin: 0;
+  }
+
+  .booking-steps span {
+    position: relative;
+    z-index: 1;
+  }
+
+  .registration-aside,
+  .form-grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid__wide {
+    grid-column: auto;
+  }
+
+  .reservation-summary,
+  .registration-guide {
+    padding: 1.05rem;
+  }
+
+  .form-section {
+    padding: 1rem;
+  }
+
+  .birthday-fields {
+    grid-column: auto;
+  }
+
+  .birthday-fields > div {
+    gap: 0.3rem;
+  }
+
+  .birthday-fields input[type="number"] {
+    width: min(5.2rem, 25%);
+  }
+
+  .form-actions {
+    display: grid;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+    min-width: 0;
   }
 
   .letter {
