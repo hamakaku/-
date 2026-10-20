@@ -1,14 +1,14 @@
 :root {
-  --school-navy: #0b2c59;
-  --school-blue: #086bbf;
-  --school-sky: #39a9e8;
-  --school-pale: #eaf6ff;
-  --school-ink: #173451;
-  --school-muted: #61758b;
-  --school-line: #c9deee;
-  --school-white: rgba(255, 255, 255, 0.95);
-  --school-danger: #b4233a;
-  --school-shadow: 0 24px 64px rgba(7, 45, 91, 0.22);
+  --school-navy: #2f4f6f;
+  --school-blue: #337ab7;
+  --school-sky: #5bc0de;
+  --school-pale: #f5f5f5;
+  --school-ink: #333;
+  --school-muted: #777;
+  --school-line: #ddd;
+  --school-white: rgba(255, 255, 255, 0.94);
+  --school-danger: #a94442;
+  --school-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 * {
@@ -26,7 +26,7 @@ body {
   min-height: 100vh;
   margin: 0;
   color: var(--school-ink);
-  background: #edf7ff;
+  background: #f5f5f5;
   font-family: "Yu Gothic UI", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   line-height: 1.75;
 }
@@ -46,9 +46,7 @@ body::after {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background:
-    linear-gradient(90deg, rgba(232, 246, 255, 0.3), transparent 30%, transparent 70%, rgba(232, 246, 255, 0.28)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(223, 241, 255, 0.34));
+  background: rgba(255, 255, 255, 0.12);
   pointer-events: none;
 }
 
@@ -62,7 +60,7 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid rgba(57, 169, 232, 0.45);
+  outline: 3px solid rgba(102, 175, 233, 0.4);
   outline-offset: 3px;
 }
 
@@ -77,10 +75,9 @@ textarea:focus-visible {
   min-height: 72px;
   padding: 0.75rem clamp(1rem, 4vw, 4rem);
   color: #fff;
-  background: rgba(8, 39, 79, 0.93);
+  background: rgba(51, 122, 183, 0.95);
   border-bottom: 1px solid rgba(255, 255, 255, 0.28);
-  box-shadow: 0 8px 30px rgba(0, 35, 82, 0.2);
-  backdrop-filter: blur(14px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
 }
 
 .site-brand {
@@ -101,9 +98,9 @@ textarea:focus-visible {
   height: 2.75rem;
   flex: 0 0 auto;
   place-items: center;
-  color: var(--school-navy);
+  color: var(--school-blue);
   background: #fff;
-  border-radius: 0.8rem 0.2rem 0.8rem 0.2rem;
+  border-radius: 4px;
   box-shadow: 0 5px 16px rgba(0, 19, 48, 0.24);
   font: 800 1.65rem/1 Georgia, serif;
   transform: rotate(-4deg);
@@ -128,10 +125,10 @@ textarea:focus-visible {
   min-height: 2.65rem;
   padding: 0.55rem 1.1rem;
   color: #fff;
-  background: linear-gradient(135deg, #2ca9ed, #0871c8);
+  background: #286090;
   border: 1px solid rgba(255, 255, 255, 0.62);
-  border-radius: 999px;
-  box-shadow: 0 6px 18px rgba(0, 25, 66, 0.25);
+  border-radius: 4px;
+  box-shadow: none;
   font-weight: 700;
   text-decoration: none;
   white-space: nowrap;
@@ -140,8 +137,7 @@ textarea:focus-visible {
 
 .site-header__reserve:hover {
   color: #fff;
-  filter: brightness(1.08);
-  transform: translateY(-1px);
+  background: #204d74;
 }
 
 main,
@@ -155,9 +151,8 @@ main.container {
   overflow: hidden;
   background: var(--school-white);
   border: 1px solid rgba(255, 255, 255, 0.92);
-  border-radius: 1.5rem;
+  border-radius: 6px;
   box-shadow: var(--school-shadow);
-  backdrop-filter: blur(14px);
 }
 
 main::before {
@@ -175,7 +170,7 @@ main::after {
   position: absolute;
   inset: 0 0 auto;
   height: 5px;
-  background: linear-gradient(90deg, var(--school-sky), var(--school-blue), var(--school-navy));
+  background: var(--school-blue);
 }
 
 h1,
@@ -243,10 +238,10 @@ textarea {
   min-height: 3rem;
   padding: 0.58rem 0.8rem;
   color: var(--school-ink);
-  background-color: rgba(255, 255, 255, 0.94) !important;
-  border: 1px solid #b7d2e7 !important;
-  border-radius: 0.72rem !important;
-  box-shadow: inset 0 1px 2px rgba(8, 53, 98, 0.04);
+  background-color: #fff !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   transition: border-color 0.18s ease, box-shadow 0.18s ease;
 }
 
@@ -261,8 +256,8 @@ input:focus,
 select:focus,
 textarea:focus {
   background-color: #fff !important;
-  border-color: var(--school-sky) !important;
-  box-shadow: 0 0 0 0.22rem rgba(57, 169, 232, 0.18) !important;
+  border-color: #66afe9 !important;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6) !important;
 }
 
 fieldset.form-group {
@@ -271,9 +266,9 @@ fieldset.form-group {
   align-items: center;
   gap: 0.45rem;
   padding: 1rem;
-  background: rgba(235, 247, 255, 0.68);
-  border: 1px solid var(--school-line);
-  border-radius: 0.9rem;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
 fieldset.form-group legend {
@@ -293,11 +288,10 @@ fieldset input[type="number"] {
 
 .card {
   overflow: hidden;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(237, 248, 255, 0.92));
-  border: 1px solid var(--school-line);
-  border-left: 5px solid var(--school-sky);
-  border-radius: 1rem;
-  box-shadow: 0 9px 26px rgba(24, 84, 139, 0.09);
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .card-body {
@@ -309,7 +303,7 @@ fieldset input[type="number"] {
 }
 
 .alert {
-  border-radius: 0.85rem;
+  border-radius: 4px;
 }
 
 .alert-danger,
@@ -329,7 +323,7 @@ dl.row {
   padding: 0.4rem 1.2rem;
   background: rgba(244, 250, 255, 0.8);
   border: 1px solid var(--school-line);
-  border-radius: 1rem;
+  border-radius: 4px;
 }
 
 dl.row dt,
@@ -355,10 +349,10 @@ main form button[type="submit"],
   margin: 0.35rem 0.4rem 0.35rem 0;
   padding: 0.7rem 1.35rem;
   color: #fff !important;
-  background: linear-gradient(135deg, #1599e6, #0764b8) !important;
-  border: 0 !important;
-  border-radius: 0.78rem !important;
-  box-shadow: 0 9px 22px rgba(5, 95, 184, 0.23);
+  background: #337ab7 !important;
+  border: 1px solid #2e6da4 !important;
+  border-radius: 4px !important;
+  box-shadow: none;
   font-weight: 700;
   text-decoration: none;
   transition: transform 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease;
@@ -368,9 +362,8 @@ main > a:hover,
 main form button[type="submit"]:hover,
 .btn-primary:hover {
   color: #fff;
-  filter: brightness(1.06);
-  box-shadow: 0 11px 25px rgba(5, 95, 184, 0.28);
-  transform: translateY(-1px);
+  background: #286090 !important;
+  border-color: #204d74 !important;
 }
 
 .btn-outline-secondary,
@@ -383,7 +376,7 @@ form a:not(.site-brand):not(.site-header__reserve) {
   color: #31516f;
   background: rgba(255, 255, 255, 0.78);
   border: 1px solid #9bb8ce;
-  border-radius: 0.78rem;
+  border-radius: 4px;
   font-weight: 700;
   text-decoration: none;
 }
@@ -393,288 +386,6 @@ form a:not(.site-brand):not(.site-header__reserve):hover {
   color: var(--school-navy);
   background: var(--school-pale);
   border-color: var(--school-blue);
-}
-
-.registration-page {
-  width: min(94%, 1180px);
-  max-width: 1180px !important;
-}
-
-.registration-page::before {
-  display: none;
-}
-
-.page-heading {
-  max-width: 760px;
-  margin-bottom: 1.75rem;
-}
-
-.page-heading__eyebrow {
-  margin: 0 0 0.45rem;
-  color: var(--school-blue);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-}
-
-.page-heading > p:last-child {
-  margin-bottom: 0;
-  color: var(--school-muted);
-}
-
-.booking-steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  margin: 0 0 2rem;
-  padding: 0;
-  list-style: none;
-}
-
-.booking-steps li {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  color: #75869a;
-  font-size: 0.82rem;
-  font-weight: 700;
-}
-
-.booking-steps li:not(:last-child)::after {
-  content: "";
-  height: 2px;
-  flex: 1;
-  margin-right: 0.55rem;
-  background: #d5e4ef;
-}
-
-.booking-steps span {
-  display: grid;
-  width: 2rem;
-  height: 2rem;
-  flex: 0 0 auto;
-  place-items: center;
-  background: #e7eff6;
-  border-radius: 50%;
-  font-size: 0.76rem;
-}
-
-.booking-steps .is-current {
-  color: var(--school-blue);
-}
-
-.booking-steps .is-current span {
-  color: #fff;
-  background: linear-gradient(135deg, var(--school-sky), var(--school-blue));
-  box-shadow: 0 5px 14px rgba(8, 107, 191, 0.25);
-}
-
-.registration-layout {
-  display: grid;
-  grid-template-columns: minmax(230px, 0.72fr) minmax(0, 1.8fr);
-  align-items: start;
-  gap: clamp(1.25rem, 3vw, 2.25rem);
-}
-
-.registration-aside {
-  position: sticky;
-  top: 96px;
-  display: grid;
-  gap: 1rem;
-}
-
-.reservation-summary,
-.registration-guide {
-  padding: 1.3rem;
-  border-radius: 1rem;
-}
-
-.reservation-summary {
-  color: #fff;
-  background:
-    radial-gradient(circle at 90% 0%, rgba(77, 192, 245, 0.45), transparent 38%),
-    linear-gradient(145deg, #0b3a70, #071f43);
-  box-shadow: 0 16px 34px rgba(8, 43, 84, 0.23);
-}
-
-.reservation-summary__label {
-  margin: 0 0 0.3rem;
-  color: #8ed8ff;
-  font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-}
-
-.reservation-summary h2 {
-  margin: 0 0 1rem;
-  color: #fff;
-  font-size: 1.2rem;
-}
-
-.reservation-summary dl,
-.reservation-summary dd {
-  margin: 0;
-}
-
-.reservation-summary dl > div {
-  padding: 0.72rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
-}
-
-.reservation-summary dt {
-  margin-bottom: 0.12rem;
-  color: #9edcff;
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-}
-
-.reservation-summary dd {
-  color: #fff;
-  font-weight: 700;
-  line-height: 1.55;
-}
-
-.registration-guide {
-  background: rgba(239, 248, 255, 0.84);
-  border: 1px solid var(--school-line);
-}
-
-.registration-guide h2 {
-  margin: 0 0 0.65rem;
-  font-size: 1rem;
-}
-
-.registration-guide ul {
-  margin: 0;
-  padding-left: 1.2rem;
-  color: #526b83;
-  font-size: 0.83rem;
-}
-
-.registration-guide li + li {
-  margin-top: 0.35rem;
-}
-
-.registration-form-panel {
-  min-width: 0;
-}
-
-.member-form {
-  display: grid;
-  gap: 1.25rem;
-  margin-top: 0 !important;
-}
-
-.form-section {
-  padding: clamp(1.15rem, 2.5vw, 1.65rem);
-  background: rgba(255, 255, 255, 0.78);
-  border: 1px solid var(--school-line);
-  border-radius: 1.1rem;
-  box-shadow: 0 8px 22px rgba(19, 73, 124, 0.06);
-}
-
-.form-section__heading {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.8rem;
-  margin-bottom: 1.25rem;
-  padding-bottom: 0.9rem;
-  border-bottom: 1px solid #dbe9f3;
-}
-
-.form-section__heading > span {
-  display: grid;
-  width: 2.2rem;
-  height: 2.2rem;
-  flex: 0 0 auto;
-  place-items: center;
-  color: #fff;
-  background: var(--school-blue);
-  border-radius: 0.7rem 0.2rem 0.7rem 0.2rem;
-  font-size: 0.75rem;
-  font-weight: 800;
-}
-
-.form-section__heading h2,
-.form-section__heading p {
-  margin: 0;
-}
-
-.form-section__heading h2 {
-  font-size: 1.15rem;
-}
-
-.form-section__heading p {
-  margin-top: 0.12rem;
-  color: var(--school-muted);
-  font-size: 0.82rem;
-}
-
-.form-grid {
-  display: grid;
-  gap: 1rem 1.15rem;
-}
-
-.form-grid--two {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.form-grid .form-group {
-  min-width: 0;
-  margin: 0;
-}
-
-.form-grid__wide {
-  grid-column: 1 / -1;
-}
-
-.required-badge {
-  display: inline-block;
-  margin-left: 0.25rem;
-  padding: 0.06rem 0.4rem;
-  color: #fff;
-  background: var(--school-danger);
-  border-radius: 999px;
-  font-size: 0.66rem;
-  line-height: 1.55;
-  vertical-align: 0.08em;
-}
-
-.birthday-fields {
-  display: block !important;
-  padding: 0 !important;
-  background: transparent !important;
-  border: 0 !important;
-}
-
-.birthday-fields > div {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.birthday-fields input[type="number"] {
-  width: min(7rem, 25%);
-}
-
-.form-actions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1rem 0 0;
-}
-
-.form-actions p {
-  margin: 0;
-  color: var(--school-muted);
-  font-size: 0.84rem;
-}
-
-.form-actions .btn {
-  min-width: 13rem;
-  margin: 0;
 }
 
 .alphabet-decoration {
@@ -690,29 +401,29 @@ form a:not(.site-brand):not(.site-header__reserve):hover {
   font-family: Georgia, "Times New Roman", serif;
   font-weight: 800;
   line-height: 1;
-  opacity: 0.18;
-  text-shadow: 0 7px 22px rgba(9, 63, 122, 0.1);
+  opacity: 0.16;
+  text-shadow: none;
   user-select: none;
 }
 
-.letter-a { top: 12%; left: 2%; color: #287dcc; font-size: clamp(5rem, 12vw, 11rem); transform: rotate(-12deg); }
-.letter-b { top: 39%; left: 5%; color: #e99725; font-size: clamp(3.5rem, 8vw, 7rem); transform: rotate(8deg); }
-.letter-c { bottom: 8%; left: 11%; color: #58a83f; font-size: clamp(4rem, 9vw, 8rem); transform: rotate(-5deg); }
-.letter-d { top: 17%; right: 9%; color: #9558bd; font-size: clamp(3.5rem, 8vw, 7rem); transform: rotate(9deg); }
-.letter-e { top: 45%; right: 2%; color: #19a7bd; font-size: clamp(5rem, 11vw, 10rem); transform: rotate(-10deg); }
-.letter-f { bottom: 5%; right: 13%; color: #dc5f85; font-size: clamp(4rem, 9vw, 8rem); transform: rotate(6deg); }
-.letter-g { top: 65%; left: 38%; color: #d4ab19; font-size: clamp(3rem, 7vw, 6rem); transform: rotate(-8deg); }
-.letter-h { top: 27%; left: 47%; color: #724bc2; font-size: clamp(3rem, 7vw, 6rem); transform: rotate(13deg); }
+.letter-a { top: 12%; left: 2%; color: #337ab7; font-size: clamp(5rem, 12vw, 11rem); transform: rotate(-12deg); }
+.letter-b { top: 39%; left: 5%; color: #f0ad4e; font-size: clamp(3.5rem, 8vw, 7rem); transform: rotate(8deg); }
+.letter-c { bottom: 8%; left: 11%; color: #5cb85c; font-size: clamp(4rem, 9vw, 8rem); transform: rotate(-5deg); }
+.letter-d { top: 17%; right: 9%; color: #8064a2; font-size: clamp(3.5rem, 8vw, 7rem); transform: rotate(9deg); }
+.letter-e { top: 45%; right: 2%; color: #5bc0de; font-size: clamp(5rem, 11vw, 10rem); transform: rotate(-10deg); }
+.letter-f { bottom: 5%; right: 13%; color: #d9534f; font-size: clamp(4rem, 9vw, 8rem); transform: rotate(6deg); }
+.letter-g { top: 65%; left: 38%; color: #f0ad4e; font-size: clamp(3rem, 7vw, 6rem); transform: rotate(-8deg); }
+.letter-h { top: 27%; left: 47%; color: #8064a2; font-size: clamp(3rem, 7vw, 6rem); transform: rotate(13deg); }
 .letter-hello,
 .letter-talk,
 .letter-english {
   font-family: "Yu Gothic UI", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
 }
-.letter-hello { top: 8%; left: 24%; color: #1a78ba; font-size: clamp(2rem, 5vw, 4.5rem); transform: rotate(-5deg); }
-.letter-talk { bottom: 17%; right: 27%; color: #1a9b8a; font-size: clamp(2rem, 4.5vw, 4rem); transform: rotate(7deg); }
-.letter-english { top: 72%; right: 32%; color: #29528e; font-size: clamp(1.8rem, 4vw, 3.7rem); transform: rotate(-4deg); }
+.letter-hello { top: 8%; left: 24%; color: #337ab7; font-size: clamp(2rem, 5vw, 4.5rem); transform: rotate(-5deg); }
+.letter-talk { bottom: 17%; right: 27%; color: #5cb85c; font-size: clamp(2rem, 4.5vw, 4rem); transform: rotate(7deg); }
+.letter-english { top: 72%; right: 32%; color: #337ab7; font-size: clamp(1.8rem, 4vw, 3.7rem); transform: rotate(-4deg); }
 
 .site-footer {
   position: relative;
@@ -723,20 +434,9 @@ form a:not(.site-brand):not(.site-header__reserve):hover {
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
 }
 
-@media (max-width: 900px) {
-  .registration-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .registration-aside {
-    position: static;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
 @media (max-width: 640px) {
   body {
-    background: #edf7ff;
+    background: #f5f5f5;
   }
 
   body::before {
@@ -785,76 +485,8 @@ form a:not(.site-brand):not(.site-header__reserve):hover {
     letter-spacing: 0.12em;
   }
 
-  .page-heading {
-    margin-bottom: 1.3rem;
-  }
-
-  .booking-steps {
-    margin-bottom: 1.35rem;
-  }
-
-  .booking-steps li {
-    display: grid;
-    justify-items: center;
-    gap: 0.25rem;
-    text-align: center;
-    font-size: 0.66rem;
-  }
-
-  .booking-steps li:not(:last-child)::after {
-    position: absolute;
-    top: 1rem;
-    left: calc(50% + 1rem);
-    width: calc(100% - 2rem);
-    margin: 0;
-  }
-
-  .booking-steps span {
-    position: relative;
-    z-index: 1;
-  }
-
-  .registration-aside,
-  .form-grid--two {
-    grid-template-columns: 1fr;
-  }
-
-  .form-grid__wide {
-    grid-column: auto;
-  }
-
-  .reservation-summary,
-  .registration-guide {
-    padding: 1.05rem;
-  }
-
-  .form-section {
-    padding: 1rem;
-  }
-
-  .birthday-fields {
-    grid-column: auto;
-  }
-
-  .birthday-fields > div {
-    gap: 0.3rem;
-  }
-
-  .birthday-fields input[type="number"] {
-    width: min(5.2rem, 25%);
-  }
-
-  .form-actions {
-    display: grid;
-  }
-
-  .form-actions .btn {
-    width: 100%;
-    min-width: 0;
-  }
-
   .letter {
-    opacity: 0.1;
+    opacity: 0.09;
   }
 
   fieldset input[type="number"] {
