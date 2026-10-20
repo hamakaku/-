@@ -24,7 +24,7 @@ return array(
 		'connection' => array(
 			'dsn'      => 'mysql:host=localhost;dbname=english_school_db',
 			'username' => 'root',
-			'password' => 'root',
+			'password' => '',
 		),
 		'charset'    => 'utf8mb4',
 	),
