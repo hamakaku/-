@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <!-- スマホなどの画面幅に合わせて表示するための指定 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap 部品集</title>
+  <!-- Bootstrap の CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <style>
+    /* デモ用の枠の色（Bootstrap の機能ではない） */
+    .demo-box { background: rgba(13, 110, 253, .1); border: 1px dashed rgba(13, 110, 253, .5); }
+    section { scroll-margin-top: 4rem; }
+  </style>
+</head>
+<body>
+
+<!--
+  ============================================================================
+  Bootstrap 部品集
+
+  Bootstrap の基本
+    ・class にあらかじめ用意された名前を書くだけで見た目が変わる
+    ・余白: m（外側）/ p（内側）+ t（上）b（下）s（左）e（右）x（左右）y（上下）+ 0〜5 / auto
+            例）mt-3 = 上の外側の余白を3、px-4 = 左右の内側の余白を4
+    ・画面幅の区切り（ブレークポイント）: sm 576px / md 768px / lg 992px / xl 1200px
+            例）col-md-6 = 幅が md 以上なら半分、それより狭いと全幅
+    ・色の名前: primary（青）/ secondary（灰）/ success（緑）/ danger（赤）/ warning（黄）/ info（水色）/ light / dark
+  ============================================================================
+-->
+
+
+<!-- ===== ヘッダー（レスポンシブなナビゲーションバー） ======================== -->
+<!--
+  navbar-expand-md: 画面幅が md 以上ならメニューを横に並べ、狭いと［≡］ボタンで開閉する
+  sticky-top: スクロールしても上に固定する
+-->
+<header class="navbar navbar-expand-md bg-body-tertiary border-bottom sticky-top">
+  <div class="container">
+    <a href="#" class="navbar-brand">部品集</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="メニュー">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#layout">レイアウト</a></li>
+        <li class="nav-item"><a class="nav-link" href="#buttons">ボタン</a></li>
+        <li class="nav-item"><a class="nav-link" href="#forms">フォーム</a></li>
+        <li class="nav-item"><a class="nav-link" href="#tables">表</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+
+<main class="container py-5">
+
+  <h1 class="mb-2">Bootstrap 部品集</h1>
+  <p class="lead text-secondary mb-5">用途ごとの部品の見本です。ブラウザの幅を変えて、スマホでの見え方も確認してください。</p>
+
+  <!-- ===== 目次（リストグループ） ============================================ -->
+  <div class="list-group mb-5" style="max-width: 24rem;">
+    <a href="#layout" class="list-group-item list-group-item-action">1. レイアウト（グリッド・余白・並べ方）</a>
+    <a href="#text" class="list-group-item list-group-item-action">2. 文字・色・枠線</a>
+    <a href="#buttons" class="list-group-item list-group-item-action">3. ボタン</a>
+    <a href="#nav" class="list-group-item list-group-item-action">4. ナビゲーション（パンくず・タブ・ページ送り）</a>
+    <a href="#messages" class="list-group-item list-group-item-action">5. お知らせ（アラート・バッジ・進み具合）</a>
+    <a href="#cards" class="list-group-item list-group-item-action">6. カード・リスト</a>
+    <a href="#tables" class="list-group-item list-group-item-action">7. 表</a>
+    <a href="#forms" class="list-group-item list-group-item-action">8. フォーム</a>
+    <a href="#interactive" class="list-group-item list-group-item-action">9. 動きのある部品（開閉・ダイアログ）</a>
+    <a href="#images" class="list-group-item list-group-item-action">10. 画像・表示の切り替え</a>
+  </div>
+
+
+  <!-- ======================================================================= -->
+  <!-- 1. レイアウト                                                           -->
+  <!-- ======================================================================= -->
+  <section id="layout" class="mb-5">
+    <h2 class="h3 pb-2 border-bottom">1. レイアウト</h2>
+
+    <!--
+      グリッド: row の中に col を並べると横並びになる。1行は12等分。
+    -->
+    <h3 class="h5 mt-4">1-1. 均等に並べる（col）</h3>
+    <div class="row text-center">
+      <div class="col demo-box py-2">col</div>
+      <div class="col demo-box py-2">col</div>
+      <div class="col demo-box py-2">col</div>
+    </div>
+
+    <h3 class="h5 mt-4">1-2. 幅を指定する（col-数字。合計12）</h3>
+    <div class="row text-center">
+      <div class="col-3 demo-box py-2">col-3</div>
+      <div class="col-6 demo-box py-2">col-6</div>
+      <div class="col-3 demo-box py-2">col-3</div>
+    </div>
+
+    <h3 class="h5 mt-4">1-3. 画面幅で並び方を変える（col-md-数字）</h3>
+    <p class="small text-secondary">幅が md（768px）以上なら横に3つ、狭いと縦に並ぶ。ブラウザの幅を変えて確認する。</p>
+    <div class="row text-center">
+      <div class="col-md-4 demo-box py-2">col-md-4</div>
+      <div class="col-md-4 demo-box py-2">col-md-4</div>
+      <div class="col-md-4 demo-box py-2">col-md-4</div>
+    </div>
+
+    <h3 class="h5 mt-4">1-4. 中身の幅だけ使う（col-auto）と、間隔（g-数字）</h3>
+    <div class="row g-3 align-items-center">
+      <div class="col-auto"><div class="demo-box p-2">col-auto</div></div>
+      <div class="col"><div class="demo-box p-2">残りの幅をすべて使う col</div></div>
+    </div>
+
+    <h3 class="h5 mt-4">1-5. 中央寄せ・幅を制限する</h3>
+    <div class="row justify-content-center">
+      <div class="col-md-6 demo-box py-2 text-center">justify-content-center で中央に置いた col-md-6</div>
+    </div>
+
+    <!--
+      d-flex: 中の要素を横に並べる（グリッドより手軽）
+        justify-content-between（両端） / -center（中央） / -end（右寄せ）
+        align-items-center（縦方向の中央） / gap-2（間隔） / flex-wrap（はみ出たら折り返す）
+    -->
+    <h3 class="h5 mt-4">1-6. 横に並べる（d-flex）</h3>
+    <div class="d-flex justify-content-between align-items-center demo-box p-2 mb-2">
+      <span>左端</span><span>右端</span>
+    </div>
+    <div class="d-flex justify-content-center gap-2 demo-box p-2 mb-2">
+      <span class="demo-box px-2">A</span><span class="demo-box px-2">B</span><span class="demo-box px-2">C</span>
+    </div>
+    <div class="d-flex justify-content-end gap-2 demo-box p-2">
+      <span class="demo-box px-2">右寄せ</span><span class="demo-box px-2">右寄せ</span>
+    </div>
+
+    <h3 class="h5 mt-4">1-7. 余白の違い</h3>
+    <div class="d-flex flex-wrap gap-3 align-items-start">
+      <div class="demo-box p-1">p-1</div>
+      <div class="demo-box p-3">p-3</div>
+      <div class="demo-box p-5">p-5</div>
+      <div class="demo-box px-5 py-1">px-5 py-1</div>
+    </div>
+  </section>
+
+
+  <!-- ======================================================================= -->
+  <!-- 2. 文字・色・枠線                                                       -->
+  <!-- ======================================================================= -->
+  <section id="text" class="mb-5">
+    <h2 class="h3 pb-2 border-bottom">2. 文字・色・枠線</h2>
+
+    <h3 class="h5 mt-4">2-1. 見出しの大きさ</h3>
+    <!-- h1〜h6 タグの代わりに class="h3" のように見た目だけ変えることもできる -->
+    <p class="h1">h1 の大きさ</p>
+    <p class="h3">h3 の大きさ</p>
+    <p class="h5">h5 の大きさ</p>
+    <p class="lead">lead: 少し大きめの説明文</p>
+    <p class="small">small: 小さめの文字</p>
+
+    <h3 class="h5 mt-4">2-2. 文字の強さ・色・寄せ</h3>
+    <p class="fw-bold">fw-bold: 太字</p>
+    <p class="text-secondary">text-secondary: 補足の文字（灰色）</p>
+    <p class="text-danger">text-danger: 注意・エラー（赤）</p>
+    <p class="text-success">text-success: 完了・成功（緑）</p>
+    <p class="text-center">text-center: 中央寄せ</p>
+    <p class="text-end">text-end: 右寄せ</p>
+
+    <h3 class="h5 mt-4">2-3. 背景・枠線・角丸・影</h3>
+    <div class="d-flex flex-wrap gap-3">
+      <div class="p-3 bg-body-tertiary">bg-body-tertiary</div>
+      <div class="p-3 bg-primary text-white">bg-primary</div>
+      <div class="p-3 border">border</div>
+      <div class="p-3 border border-danger">border-danger</div>
+      <div class="p-3 border rounded-3">rounded-3</div>
+      <div class="p-3 shadow-sm">shadow-sm</div>
+      <div class="p-3 border-bottom">border-bottom だけ</div>
+    </div>
+  </section>
+
+
+  <!-- ======================================================================= -->
+  <!-- 3. ボタン                                                               -->
+  <!-- ======================================================================= -->
+  <section id="buttons" class="mb-5">
+    <h2 class="h3 pb-2 border-bottom">3. ボタン</h2>
+    <!-- btn と btn-色の名前 を組み合わせる。btn-outline-色の名前 は枠線だけのボタン -->
+
+    <h3 class="h5 mt-4">3-1. 色</h3>
+    <div class="d-flex flex-wrap gap-2">
+      <button type="button" class="btn btn-primary">primary</button>
+      <button type="button" class="btn btn-secondary">secondary</button>
+      <button type="button" class="btn btn-success">success</button>
+      <button type="button" class="btn btn-danger">danger</button>
+      <button type="button" class="btn btn-warning">warning</button>
+      <button type="button" class="btn btn-link">link</button>
+    </div>
+
+    <h3 class="h5 mt-4">3-2. 枠だけ（outline）</h3>
+    <div class="d-flex flex-wrap gap-2">
+      <button type="button" class="btn btn-outline-primary">outline-primary</button>
+      <button type="button" class="btn btn-outline-secondary">outline-secondary</button>
+      <button type="button" class="btn btn-outline-danger">outline-danger</button>
+    </div>
+
+    <h3 class="h5 mt-4">3-3. 大きさ・幅・押せない状態</h3>
+    <div class="d-flex flex-wrap gap-2 align-items-center mb-2">
+      <button type="button" class="btn btn-primary btn-lg">btn-lg</button>
+      <button type="button" class="btn btn-primary">標準</button>
+      <button type="button" class="btn btn-primary btn-sm">btn-sm</button>
+      <button type="button" class="btn btn-primary px-5">px-5 で横長に</button>
+      <button type="button" class="btn btn-primary" disabled>disabled</button>
+    </div>
+    <button type="button" class="btn btn-outline-primary w-100">w-100: 横幅いっぱい（スマホで押しやすい）</button>
+
+    <h3 class="h5 mt-4">3-4. リンクをボタンの見た目にする</h3>
+    <!-- a タグにも btn クラスを付けると、ボタンと同じ見た目になる -->
+    <a href="#" class="btn btn-success">a タグのボタン</a>
+
+    <h3 class="h5 mt-4">3-5. ボタンをまとめる（btn-group）</h3>
+    <div class="btn-group" role="group" aria-label="表示の切り替え">
+      <button type="button" class="btn btn-outline-secondary active">日</button>
+      <button type="button" class="btn btn-outline-secondary">週</button>
+      <button type="button" class="btn btn-outline-secondary">月</button>
+    </div>
+  </section>
+
+
+  <!-- ======================================================================= -->
+  <!-- 4. ナビゲーション                                                       -->
+  <!-- ======================================================================= -->
+  <section id="nav" class="mb-5">
+    <h2 class="h3 pb-2 border-bottom">4. ナビゲーション</h2>
+
+    <h3 class="h5 mt-4">4-1. パンくずリスト（今いる場所を示す）</h3>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">トップ</a></li>
+        <li class="breadcrumb-item"><a href="#">お問い合わせ</a></li>
+        <li class="breadcrumb-item active" aria-current="page">入力内容の確認</li>
+      </ol>
+    </nav>
+
+    <h3 class="h5 mt-4">4-2. タブ（nav-tabs）</h3>
+    <ul class="nav nav-tabs">
+      <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">すべて</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">未対応</a></li>
+      <li class="nav-item"><a class="nav-link disabled" aria-disabled="true">対応済み</a></li>
+    </ul>
+
+    <h3 class="h5 mt-4">4-3. 丸いタブ（nav-pills）と横幅いっぱい（nav-fill）</h3>
+    <ul class="nav nav-pills nav-fill">
+      <li class="nav-item"><a class="nav-link" href="#">準備</a></li>
+      <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">作業中</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">確認</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">完了</a></li>
+    </ul>
+
+    <h3 class="h5 mt-4">4-4. ページ送り（pagination）</h3>
+    <nav aria-label="ページ送り">
+      <ul class="pagination">
+        <li class="page-item disabled"><a class="page-link">前へ</a></li>
+        <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">次へ</a></li>
+      </ul>
+    </nav>
+  </section>
+
+
+  <!-- ======================================================================= -->
+  <!-- 5. お知らせ・状態を示す部品                                             -->
+  <!-- ======================================================================= -->
+  <section id="messages" class="mb-5">
+    <h2 class="h3 pb-2 border-bottom">5. お知らせ・状態を示す部品</h2>
+
+    <h3 class="h5 mt-4">5-1. アラート</h3>
+    <!-- alert と alert-色の名前 を組み合わせる -->
+    <div class="alert alert-info">alert-info: 操作の説明や補足</div>
+    <div class="alert alert-success">alert-success: 処理が完了したことのお知らせ</div>
+    <div class="alert alert-warning">alert-warning: 注意してほしいこと</div>
+    <div class="alert alert-danger">
+      <p class="fw-bold mb-1">alert-danger: エラーのまとめ</p>
+      <ul class="mb-0">
+        <li>エラー1つめ</li>
+        <li>エラー2つめ</li>
+      </ul>
+    </div>
+    <!-- 閉じるボタン付き（JavaScript が必要） -->
+    <div class="alert alert-secondary alert-dismissible fade show">
+      閉じるボタン付きのアラート
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="閉じる"></button>
+    </div>
+
+    <h3 class="h5 mt-4">5-2. バッジ（小さなラベル）</h3>
+    <p>
+      項目名 <span class="badge bg-danger">必須</span>
+      項目名 <span class="badge bg-secondary">任意</span>
+      お知らせ <span class="badge rounded-pill bg-primary">NEW</span>
+      <span class="badge text-bg-warning">text-bg-warning</span>
+    </p>
+
+    <h3 class="h5 mt-4">5-3. 進み具合（プログレスバー）</h3>
+    <div class="progress mb-2" role="progressbar" aria-label="進み具合" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-bar" style="width: 50%">50%</div>
+    </div>
+    <div class="progress" role="progressbar" aria-label="進み具合" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-bar bg-success" style="width: 100%">完了</div>
+    </div>
+
+    <h3 class="h5 mt-4">5-4. 読み込み中の表示（スピナー）</h3>
+    <div class="d-flex gap-3 align-items-center">
+      <div class="spinner-border text-primary" role="status"><span class="visually-hidden">読み込み中</span></div>
+      <button class="btn btn-primary" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+        送信中...
+      </button>
+    </div>
+  </section>
+
+
+  <!-- ======================================================================= -->
+  <!-- 6. カード・リスト                                                       -->
+  <!-- ======================================================================= -->
+  <section id="cards" class="mb-5">
+    <h2 class="h3 pb-2 border-bottom">6. カード・リスト</h2>
+
+    <h3 class="h5 mt-4">6-1. カードを並べる（row-cols）</h3>
+    <!--
+      row-cols-1 row-cols-md-3: スマホでは1列、md 以上では3列
+      h-100: 同じ行のカードの高さをそろえる
+    -->
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h4 class="card-title h6">プランA</h4>
+            <p class="card-text small text-secondary">説明文が短いカード。</p>
+          </div>
+          <div class="card-footer bg-transparent border-0">
+            <a href="#" class="btn btn-outline-primary w-100">選ぶ</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 border-primary">
+          <div class="card-header bg-primary text-white small">おすすめ</div>
+          <div class="card-body">
+            <h4 class="card-title h6">プランB</h4>
+            <p class="card-text small text-secondary">説明文が長いカード。ほかのカードと高さがそろっていることを確認する。説明文が長いカード。</p>
+          </div>
+          <div class="card-footer bg-transparent border-0">
+            <a href="#" class="btn btn-primary w-100">選ぶ</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h4 class="card-title h6">プランC</h4>
+            <p class="card-text small text-secondary">選べないカード。</p>
+          </div>
+          <div class="card-footer bg-transparent border-0">
+            <button type="button" class="btn btn-outline-secondary w-100" disabled>選べません</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="h5 mt-4">6-2. 画像と文章を横に並べたカード</h3>
+    <div class="card" style="max-width: 32rem;">
+      <div class="row g-0 align-items-center">
+        <div class="col-4 p-3">
+          <!-- ratio: 縦横比を固定した枠（ratio-1x1 は正方形） -->
+          <div class="ratio ratio-1x1 bg-secondary-subtle rounded"></div>
+        </div>
+        <div class="col-8">
+          <div class="card-body">
+            <h4 class="card-title h6">タイトル</h4>
+            <p class="card-text small mb-0">画像の右に説明を置くカード。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="h5 mt-4">6-3. リストグループ</h3>
+    <div class="list-group" style="max-width: 24rem;">
+      <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+        メニュー1 <span class="badge rounded-pill bg-primary">3</span>
+      </a>
+      <a href="#" class="list-group-item list-group-item-action">メニュー2</a>
+      <a href="#" class="list-group-item list-group-item-action text-danger">注意が必要なメニュー</a>
+    </div>
+  </section>
+
+
+  <!-- ======================================================================= -->
+  <!-- 7. 表                                                                   -->
+  <!-- ======================================================================= -->
+  <section id="tables" class="mb-5">
+    <h2 class="h3 pb-2 border-bottom">7. 表</h2>
+
+    <h3 class="h5 mt-4">7-1. 一覧の表（横に項目が並ぶ）</h3>
+    <!--
+      table-striped: 1行おきに色を付ける / table-hover: マウスを乗せた行に色を付ける
+      table-responsive: 表が画面より広いとき、表だけ横にスクロールできるようにする（スマホ対策）
+    -->
+    <div class="table-responsive">
+      <table class="table table-striped table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">注文番号</th>
+            <th scope="col">注文日</th>
+            <th scope="col">商品名</th>
+            <th scope="col" class="text-end">金額</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0001</td><td>2026/01/10</td><td>サンプル商品A</td><td class="text-end">1,200円</td>
+            <td><a href="#" class="btn btn-sm btn-outline-primary">詳細</a></td>
+          </tr>
+          <tr>
+            <td>0002</td><td>2026/01/12</td><td>サンプル商品B</td><td class="text-end">3,400円</td>
+            <td><a href="#" class="btn btn-sm btn-outline-primary">詳細</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="h5 mt-4">7-2. 項目と値の表（左に見出し）</h3>
+    <!-- th に table-light を付けると見出しのセルに色が付く。w-25 は幅25% -->
+    <table class="table table-bordered" style="max-width: 32rem;">
+      <tbody>
+        <tr><th scope="row" class="table-light w-25">お名前</th><td>山田 太郎</td></tr>
+        <tr><th scope="row" class="table-light">お問い合わせ種別</th><td>商品について</td></tr>
+        <tr><th scope="row" class="table-light">内容</th><td>テキストテキストテキスト</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="h5 mt-4">7-3. 表を使わない項目と値の並べ方（dl）</h3>
+    <!-- スマホでは見出しと値が縦に並び、md 以上では横に並ぶ -->
+    <dl class="row" style="max-width: 32rem;">
+      <dt class="col-md-4">配送先</dt>
+      <dd class="col-md-8">東京都サンプル区 1-2-3</dd>
+      <dt class="col-md-4">お届け希望日</dt>
+      <dd class="col-md-8">2026年1月20日（火）</dd>
+    </dl>
+  </section>
+
+
+  <!-- ======================================================================= -->
+  <!-- 8. フォーム                                                             -->
+  <!-- ======================================================================= -->
+  <section id="forms" class="mb-5">
+    <h2 class="h3 pb-2 border-bottom">8. フォーム</h2>
+    <!--
+      基本の形
+        <label for="id名" class="form-label">項目名</label>
+        <input type="..." id="id名" name="送信する名前" class="form-control">
+      ・label の for と input の id を同じにすると、項目名をクリックしたときに入力欄が選ばれる
+      ・name はフォームを送信したときの項目名
+    -->
+
+    <form action="#" method="post" style="max-width: 48rem;">
+
+      <h3 class="h5 mt-4">8-1. いろいろな入力欄</h3>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="f-name" class="form-label">テキスト</label>
+          <input type="text" id="f-name" name="sample_name" class="form-control" placeholder="入力例を薄く表示">
+        </div>
+        <div class="col-md-6">
+          <label for="f-mail" class="form-label">メールアドレス</label>
+          <!-- type="email" / "tel" / "number" にすると、スマホで入力しやすいキーボードが出る -->
+          <input type="email" id="f-mail" name="sample_mail" class="form-control">
+        </div>
+        <div class="col-md-6">
+          <label for="f-pass" class="form-label">パスワード</label>
+          <input type="password" id="f-pass" name="sample_pass" class="form-control">
+          <div class="form-text">form-text: 入力欄の下の説明（例: 8文字以上）</div>
+        </div>
+        <div class="col-md-6">
+          <label for="f-date" class="form-label">日付</label>
+          <input type="date" id="f-date" name="sample_date" class="form-control">
+        </div>
+        <div class="col-md-6">
+          <label for="f-ro" class="form-label">読み取り専用</label>
+          <input type="text" id="f-ro" class="form-control" value="変更できない値" readonly>
+        </div>
+        <div class="col-md-6">
+          <label for="f-dis" class="form-label">無効</label>
+          <input type="text" id="f-dis" class="form-control" value="使えない入力欄" disabled>
+        </div>
+      </div>
+
+      <h3 class="h5 mt-4">8-2. 入力欄に文字やボタンを付ける（input-group）</h3>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="f-price" class="form-label">金額</label>
+          <div class="input-group">
+            <input type="number" id="f-price" name="sample_price" class="form-control">
+            <span class="input-group-text">円</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="f-code" class="form-label">コードで検索</label>
+          <div class="input-group">
+            <input type="text" id="f-code" name="sample_code" class="form-control">
+            <button class="btn btn-outline-secondary" type="button">検索</button>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="h5 mt-4">8-3. 選択肢</h3>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="f-select" class="form-label">プルダウン</label>
+          <select id="f-select" name="sample_select" class="form-select">
+            <option value="">選択してください</option>
+            <option value="1">選択肢1</option>
+            <option value="2">選択肢2</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <div class="form-label">ラジオボタン（縦に並べる）</div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="sample_radio" id="f-r1" value="1">
+            <label class="form-check-label" for="f-r1">選択肢1</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="sample_radio" id="f-r2" value="2">
+            <label class="form-check-label" for="f-r2">選択肢2</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-label">チェックボックス（横に並べる: form-check-inline）</div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="sample_check[]" id="f-c1" value="1">
+            <label class="form-check-label" for="f-c1">項目1</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="sample_check[]" id="f-c2" value="2">
+            <label class="form-check-label" for="f-c2">項目2</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-label">スイッチ</div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" name="sample_switch" id="f-sw" value="1">
+            <label class="form-check-label" for="f-sw">お知らせを受け取る</label>
+          </div>
+        </div>
+        <div class="col-12">
+          <label for="f-text" class="form-label">複数行のテキスト</label>
+          <textarea id="f-text" name="sample_text" class="form-control" rows="3"></textarea>
+        </div>
+      </div>
+
+      <h3 class="h5 mt-4">8-4. 入力チェックの結果を表示する</h3>
+      <!--
+        is-invalid（エラー）/ is-valid（OK）を入力欄に付けると枠の色が変わり、
+        すぐ下の invalid-feedback / valid-feedback が表示される
+      -->
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="f-ng" class="form-label">エラーの例</label>
+          <input type="text" id="f-ng" class="form-control is-invalid" value="abc">
+          <div class="invalid-feedback">エラーメッセージが入る</div>
+        </div>
+        <div class="col-md-6">
+          <label for="f-ok" class="form-label">OK の例</label>
+          <input type="text" id="f-ok" class="form-control is-valid" value="12345">
+          <div class="valid-feedback">正しく入力されています</div>
+        </div>
+      </div>
+
+      <h3 class="h5 mt-4">8-5. 項目名を左、入力欄を右に置く（横並びのフォーム）</h3>
+      <!-- col-form-label: 入力欄と縦の位置をそろえた項目名 -->
+      <div class="row mb-3">
+        <label for="f-h1" class="col-sm-3 col-form-label">項目名 <span class="badge bg-danger">必須</span></label>
+        <div class="col-sm-9"><input type="text" id="f-h1" class="form-control"></div>
+      </div>
+      <div class="row mb-3">
+        <label for="f-h2" class="col-sm-3 col-form-label">項目名</label>
+        <div class="col-sm-9"><input type="text" id="f-h2" class="form-control"></div>
+      </div>
+
+      <h3 class="h5 mt-4">8-6. 小さい入力欄を横に並べる（w-auto と d-flex）</h3>
+      <div class="d-flex align-items-center gap-1 flex-wrap">
+        <input type="text" class="form-control w-auto" size="4" aria-label="1つめ">
+        <span>-</span>
+        <input type="text" class="form-control w-auto" size="4" aria-label="2つめ">
+        <span>-</span>
+        <input type="text" class="form-control w-auto" size="4" aria-label="3つめ">
+      </div>
+
+      <h3 class="h5 mt-4">8-7. 項目名を入力欄の中に置く（フローティングラベル）</h3>
+      <div class="form-floating" style="max-width: 24rem;">
+        <input type="text" class="form-control" id="f-float" placeholder="項目名">
+        <label for="f-float">項目名（入力すると上に移動する）</label>
+      </div>
+
+      <h3 class="h5 mt-4">8-8. 送信ボタンの置き方</h3>
+      <div class="d-flex flex-column flex-sm-row justify-content-center gap-2 mt-3">
+        <a href="#" class="btn btn-outline-secondary px-4">戻る</a>
+        <button type="submit" class="btn btn-primary px-4">送信する</button>
+      </div>
+      <p class="small text-secondary text-center mt-2">flex-column flex-sm-row: スマホではボタンが縦に、sm 以上では横に並ぶ</p>
+    </form>
+  </section>
+
+
+  <!-- ======================================================================= -->
+  <!-- 9. 動きのある部品（JavaScript を使う）                                  -->
+  <!-- ======================================================================= -->
+  <section id="interactive" class="mb-5">
+    <h2 class="h3 pb-2 border-bottom">9. 動きのある部品</h2>
+    <!-- data-bs-〜 の属性を書くだけで動く。ページの最後で Bootstrap の JavaScript を読み込んでいる必要がある -->
+
+    <h3 class="h5 mt-4">9-1. 開閉（collapse）</h3>
+    <button class="btn btn-outline-secondary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#demoCollapse" aria-expanded="false" aria-controls="demoCollapse">
+      くわしく見る
+    </button>
+    <div class="collapse mt-2" id="demoCollapse">
+      <div class="card card-body small">ボタンを押すと開いたり閉じたりする部分。</div>
+    </div>
+
+    <h3 class="h5 mt-4">9-2. アコーディオン（よくある質問などに）</h3>
+    <div class="accordion" id="demoAccordion" style="max-width: 40rem;">
+      <div class="accordion-item">
+        <h4 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#qa1" aria-expanded="true" aria-controls="qa1">質問1</button>
+        </h4>
+        <div id="qa1" class="accordion-collapse collapse show" data-bs-parent="#demoAccordion">
+          <div class="accordion-body small">回答1</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h4 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#qa2" aria-expanded="false" aria-controls="qa2">質問2</button>
+        </h4>
+        <div id="qa2" class="accordion-collapse collapse" data-bs-parent="#demoAccordion">
+          <div class="accordion-body small">回答2</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="h5 mt-4">9-3. 確認のダイアログ（モーダル）</h3>
+    <!-- data-bs-toggle="modal" と data-bs-target="#モーダルのid" でボタンとつなぐ -->
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#demoModal">削除する</button>
+    <div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title h5" id="demoModalLabel">確認</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+          </div>
+          <div class="modal-body">本当に削除しますか？</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">やめる</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">削除する</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="h5 mt-4">9-4. ドロップダウンメニュー</h3>
+    <div class="dropdown">
+      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">メニュー</button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">項目1</a></li>
+        <li><a class="dropdown-item" href="#">項目2</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item text-danger" href="#">ログアウトなど</a></li>
+      </ul>
+    </div>
+
+    <h3 class="h5 mt-4">9-5. ツールチップ（マウスを乗せると説明が出る）</h3>
+    <!-- ツールチップだけは、ページの最後にある初期化の JavaScript も必要 -->
+    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-title="ここに説明が出る">？ マウスを乗せる</button>
+  </section>
+
+
+  <!-- ======================================================================= -->
+  <!-- 10. 画像・表示の切り替え                                                -->
+  <!-- ======================================================================= -->
+  <section id="images" class="mb-5">
+    <h2 class="h3 pb-2 border-bottom">10. 画像・表示の切り替え</h2>
+
+    <h3 class="h5 mt-4">10-1. 画像の形</h3>
+    <!--
+      img-fluid: 親の幅に合わせて縮む（はみ出さない）
+      rounded / rounded-circle / img-thumbnail: 角丸 / 丸 / 枠付き
+    -->
+    <div class="d-flex flex-wrap gap-3 align-items-center">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Crect width='96' height='96' fill='%23adb5bd'/%3E%3C/svg%3E" class="rounded" width="96" height="96" alt="角丸の例">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Crect width='96' height='96' fill='%23adb5bd'/%3E%3C/svg%3E" class="rounded-circle" width="96" height="96" alt="丸の例">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Crect width='96' height='96' fill='%23adb5bd'/%3E%3C/svg%3E" class="img-thumbnail" width="96" height="96" alt="枠付きの例">
+    </div>
+
+    <h3 class="h5 mt-4">10-2. 画面幅で表示・非表示を切り替える</h3>
+    <!-- d-none（隠す）と d-md-block（md 以上で表示）などを組み合わせる -->
+    <div class="d-none d-md-block alert alert-secondary">md 以上の幅でだけ表示される</div>
+    <div class="d-md-none alert alert-secondary">md より狭い幅（スマホ）でだけ表示される</div>
+  </section>
+
+
+</main>
+
+
+<!-- ===== フッター ========================================================== -->
+<footer class="border-top py-3 text-center small text-secondary">
+  &copy; サンプル
+</footer>
+
+<!-- Bootstrap の JavaScript（開閉・モーダル・ドロップダウンなどに必要） -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<!-- ツールチップを使うときだけ必要な初期化 -->
+<script>
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function (el) {
+    new bootstrap.Tooltip(el);
+  });
+</script>
+</body>
+</html>

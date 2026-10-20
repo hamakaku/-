@@ -1,0 +1,22 @@
+{% extends "layout.twig" %}
+
+{#
+  【見本】会員登録せず予約へ：予約確認（仕様書 p.3）
+  送信先: POST reserve/guest/end（opinion と CSRF トークンを送る）
+
+  渡される値: title / data（予約内容） / userData（入力値） / csrf（key / token）
+#}
+
+{% block main %}
+<main>
+  {# TODO: 実装する（デザイン・予約内容と予約者情報の表示・ご要望の入力） #}
+  <h1>{{ title }}</h1>
+
+  <form action="{{ base_url() }}reserve/guest/end" method="post">
+    <input type="hidden" name="{{ csrf.key }}" value="{{ csrf.token }}">
+
+    <a href="{{ base_url() }}search">中止する</a>
+    <button type="submit">予約する</button>
+  </form>
+</main>
+{% endblock main %}

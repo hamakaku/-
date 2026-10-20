@@ -1,0 +1,30 @@
+{% extends "layout.twig" %}
+
+{#
+  【見本】会員登録せず予約へ：予約者基本情報入力（仕様書 p.2）
+  送信先: POST reserve/guest/check（項目名は Model_Guest::validate() を参照）
+
+  渡される値: title / data（予約内容） / userData（入力値） / prefs（都道府県）
+              errors（入力エラーのとき）
+#}
+
+{% block main %}
+<main>
+  {# TODO: 実装する（デザイン・予約内容の表示・残りの入力項目・エラー表示） #}
+  <h1>{{ title }}</h1>
+
+  {% if errors is defined and errors %}
+    {% for message in errors %}<p>{{ message }}</p>{% endfor %}
+  {% endif %}
+
+  <form action="{{ base_url() }}reserve/guest/check" method="post">
+    <p>セイ <input type="text" name="familyName_kana" value="{{ userData.familyName_kana|default('') }}"></p>
+    <p>メイ <input type="text" name="givenName_kana" value="{{ userData.givenName_kana|default('') }}"></p>
+    <p>Email <input type="email" name="email" value="{{ userData.email|default('') }}"></p>
+    <p>Email（確認用） <input type="email" name="email2" value="{{ userData.email2|default('') }}"></p>
+    <p>電話番号 <input type="tel" name="tel" value="{{ userData.tel|default('') }}"></p>
+
+    <button type="submit">確認画面へ</button>
+  </form>
+</main>
+{% endblock main %}

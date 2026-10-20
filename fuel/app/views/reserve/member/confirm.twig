@@ -1,0 +1,50 @@
+{% extends "layout.twig" %}
+
+{# 【必須課題】会員登録して予約へ：予約確認（仕様書 p.5「会員登録をせず予約へ」と同様） #}
+
+{% block main %}
+	{% autoescape 'html' %}
+		<main class="container py-5" style="max-width: 800px;">
+			<h1>予約内容の最終確認</h1>
+			<p class="text-muted">内容を確認して「予約する」を押してください。</p>
+
+			<section class="card card-body mb-4" aria-labelledby="reservation-heading">
+				<h2 id="reservation-heading" class="h5">予約内容</h2>
+				<dl class="row mb-0">
+					<dt class="col-sm-4">講師</dt><dd class="col-sm-8">{{ data.instructor.name }}</dd>
+					<dt class="col-sm-4">コース</dt><dd class="col-sm-8">{{ data.course.name }}</dd>
+					<dt class="col-sm-4">日時</dt><dd class="col-sm-8">{{ data.date.year }}年{{ data.date.month }}月{{ data.date.day }}日（{{ data.date.week }}） {{ data.time }}:00</dd>
+				</dl>
+			</section>
+
+			<section class="card card-body mb-4" aria-labelledby="member-heading">
+				<h2 id="member-heading" class="h5">会員情報</h2>
+				<dl class="row mb-0">
+					<dt class="col-sm-4">氏名</dt><dd class="col-sm-8">{{ userData.familyName }} {{ userData.givenName }}</dd>
+					<dt class="col-sm-4">フリガナ</dt><dd class="col-sm-8">{{ userData.familyName_kana }} {{ userData.givenName_kana }}</dd>
+					<dt class="col-sm-4">メールアドレス</dt><dd class="col-sm-8">{{ userData.email }}</dd>
+					<dt class="col-sm-4">電話番号</dt><dd class="col-sm-8">{{ userData.tel }}</dd>
+					<dt class="col-sm-4">郵便番号</dt><dd class="col-sm-8">{{ userData.zip|default('') ?: '未入力' }}</dd>
+					<dt class="col-sm-4">住所</dt><dd class="col-sm-8">{{ (userData.pref ~ userData.city ~ userData.address)|trim ?: '未入力' }}</dd>
+					<dt class="col-sm-4">生年月日</dt><dd class="col-sm-8">{{ userData.birthday|default('') ?: '未入力' }}</dd>
+					<dt class="col-sm-4">性別</dt><dd class="col-sm-8">{{ userData.sex|default('') ?: '未選択' }}</dd>
+					<dt class="col-sm-4">メールマガジン</dt><dd class="col-sm-8">{{ userData.mail_magazine == '1' ? '希望する' : '希望しない' }}</dd>
+					<dt class="col-sm-4">パスワード</dt><dd class="col-sm-8">設定済み（安全のため表示しません）</dd>
+				</dl>
+			</section>
+
+			<form action="{{ base_url() }}reserve/member/end" method="post">
+				<input type="hidden" name="{{ csrf.key }}" value="{{ csrf.token }}">
+				<input type="hidden" name="submission_token" value="{{ submission_token }}">
+				<div class="form-group mb-4">
+					<label for="opinion">ご要望・ご意見</label>
+					<textarea id="opinion" name="opinion" class="form-control" rows="5"></textarea>
+				</div>
+				<div class="d-flex gap-3">
+					<a class="btn btn-outline-secondary" href="{{ base_url() }}search">中止する</a>
+					<button type="submit" class="btn btn-primary">予約する</button>
+				</div>
+			</form>
+		</main>
+	{% endautoescape %}
+{% endblock main %}

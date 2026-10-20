@@ -1,0 +1,12 @@
+{% extends "layout.twig" %}
+
+{# 不正な操作（POST 以外のアクセス・CSRF エラー）のときの画面 #}
+
+{% block main %}
+<main>
+  <p>不正な操作がありました。</p>
+  <a href="{{ base_url() }}">トップへ</a>
+
+  {# TODO: デザイン #}
+</main>
+{% endblock main %}

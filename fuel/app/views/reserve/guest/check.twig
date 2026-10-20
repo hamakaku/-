@@ -1,0 +1,17 @@
+{% extends "layout.twig" %}
+
+{#
+  【見本】会員登録せず予約へ：入力確認（仕様書 p.3）
+
+  渡される値: title / data（予約内容） / userData（入力値）
+#}
+
+{% block main %}
+<main>
+  {# TODO: 実装する（デザイン・予約内容と入力内容の表示） #}
+  <h1>{{ title }}</h1>
+
+  <a href="{{ base_url() }}reserve/guest">修正する</a>
+  <a href="{{ base_url() }}reserve/guest/confirm">予約確認に進む</a>
+</main>
+{% endblock main %}

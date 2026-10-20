@@ -1,0 +1,21 @@
+{% extends "layout.twig" %}
+
+{#
+  予約確定（会員登録せず予約へ・会員登録して予約へ 共通。仕様書 p.4）
+
+  渡される値: title / reserve_id（予約番号）
+#}
+
+{% block main %}
+  <main>
+    {# TODO: 実装する（デザイン） #}
+    <h1>{{ title }}</h1>
+
+    <p>予約完了しました。</p>
+    {% if reserve_id is defined and reserve_id %}
+      <p>予約番号：{{ reserve_id }}</p>
+    {% endif %}
+
+    <a href="{{ base_url() }}">TOPへ戻る</a>
+  </main>
+{% endblock main %}

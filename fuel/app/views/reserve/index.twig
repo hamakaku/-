@@ -1,0 +1,17 @@
+{% extends "layout.twig" %}
+
+{#
+  予約実行選択（仕様書「3 予約実行選択」）
+
+  渡される値: title / data（予約内容: instructor / course / date / time）
+#}
+
+{% block main %}
+  <main>
+    {# TODO: 実装する（デザイン・予約内容の表示） #}
+    <h1>{{ title }}</h1>
+
+    <a href="{{ base_url() }}reserve/member">会員登録して予約へ</a>
+    <a href="{{ base_url() }}reserve/guest">会員登録せず予約へ</a>
+  </main>
+{% endblock main %}

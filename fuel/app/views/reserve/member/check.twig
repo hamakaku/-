@@ -1,0 +1,27 @@
+{% extends "layout.twig" %}
+
+{# 【必須課題】会員登録して予約へ：入力確認（仕様書 p.5） #}
+
+{% block main %}
+  {% autoescape 'html' %}
+    <main class="container py-5" style="max-width: 800px;">
+      <h1>会員登録情報の確認</h1>
+      <p>入力内容を確認してください。</p>
+      <dl class="row">
+        <dt class="col-sm-4">氏名</dt><dd class="col-sm-8">{{ userData.familyName }} {{ userData.givenName }}</dd>
+        <dt class="col-sm-4">フリガナ</dt><dd class="col-sm-8">{{ userData.familyName_kana }} {{ userData.givenName_kana }}</dd>
+        <dt class="col-sm-4">メールアドレス</dt><dd class="col-sm-8">{{ userData.email }}</dd>
+        <dt class="col-sm-4">電話番号</dt><dd class="col-sm-8">{{ userData.tel }}</dd>
+        <dt class="col-sm-4">郵便番号</dt><dd class="col-sm-8">{{ userData.zip|default('未入力') }}</dd>
+        <dt class="col-sm-4">住所</dt><dd class="col-sm-8">{{ userData.pref }} {{ userData.city }} {{ userData.address }}</dd>
+        <dt class="col-sm-4">生年月日</dt><dd class="col-sm-8">{{ userData.birthday|default('未入力') }}</dd>
+        <dt class="col-sm-4">性別</dt><dd class="col-sm-8">{{ userData.sex|default('未選択') }}</dd>
+        <dt class="col-sm-4">メールマガジン</dt><dd class="col-sm-8">{{ userData.mail_magazine == '1' ? '希望する' : '希望しない' }}</dd>
+        <dt class="col-sm-4">パスワード</dt><dd class="col-sm-8">設定済み（安全のため表示しません）</dd>
+      </dl>
+
+      <a href="{{ base_url() }}reserve/member">修正する</a>
+      <a href="{{ base_url() }}reserve/member/confirm">予約確認に進む</a>
+    </main>
+  {% endautoescape %}
+{% endblock main %}

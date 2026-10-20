@@ -1,0 +1,54 @@
+{% extends "layout.twig" %}
+
+{#
+  仮の予約フォーム（仕様書「2 検索画面」は追加課題のため、それまでの代わり）
+  講師・コース・予約日・時間を選んで POST reserve に送る
+    送信する項目: instructorId / course / date（Y-m-d） / time（9〜20）
+
+  渡される値: title / instructors / courses / input（入力値） / min_date / max_date
+              errors（入力エラーのとき）
+#}
+
+{% block main %}
+<main>
+  {# TODO: 実装する（デザイン） #}
+  <h1>{{ title }}</h1>
+
+  {% if errors is defined and errors %}
+    {% for message in errors %}<p>{{ message }}</p>{% endfor %}
+  {% endif %}
+
+  <form action="{{ base_url() }}reserve" method="post">
+    <p>
+      講師
+      <select name="instructorId">
+        {% for instructor in instructors %}
+        <option value="{{ instructor.id }}">{{ instructor.name }}</option>
+        {% endfor %}
+      </select>
+    </p>
+    <p>
+      コース
+      <select name="course">
+        {% for course in courses %}
+        <option value="{{ course.id }}">{{ course.name }}</option>
+        {% endfor %}
+      </select>
+    </p>
+    <p>
+      予約日
+      <input type="date" name="date" min="{{ min_date }}" max="{{ max_date }}" value="{{ min_date }}">
+    </p>
+    <p>
+      時間
+      <select name="time">
+        {% for i in 9..20 %}
+        <option value="{{ i }}">{{ i }}:00</option>
+        {% endfor %}
+      </select>
+    </p>
+
+    <button type="submit">予約へ進む</button>
+  </form>
+</main>
+{% endblock main %}
