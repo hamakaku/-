@@ -21,12 +21,12 @@ html {
 }
 
 body {
+  position: relative;
+  isolation: isolate;
   min-height: 100vh;
   margin: 0;
   color: var(--school-ink);
-  background:
-    linear-gradient(112deg, rgba(248, 252, 255, 0.52), rgba(220, 239, 255, 0.2)),
-    url("../img/school-background.png") center top / cover fixed no-repeat;
+  background: #edf7ff;
   font-family: "Yu Gothic UI", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   line-height: 1.75;
 }
@@ -36,9 +36,19 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: -2;
+  background: url("../img/english-classroom-background.png") center / cover no-repeat;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
   background:
-    linear-gradient(90deg, rgba(232, 246, 255, 0.32), transparent 32%, transparent 68%, rgba(232, 246, 255, 0.28)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(223, 241, 255, 0.48));
+    linear-gradient(90deg, rgba(232, 246, 255, 0.3), transparent 30%, transparent 70%, rgba(232, 246, 255, 0.28)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(223, 241, 255, 0.34));
   pointer-events: none;
 }
 
@@ -677,20 +687,32 @@ form a:not(.site-brand):not(.site-header__reserve):hover {
 
 .letter {
   position: absolute;
-  color: rgba(255, 255, 255, 0.58);
   font-family: Georgia, "Times New Roman", serif;
   font-weight: 800;
   line-height: 1;
-  text-shadow: 0 8px 26px rgba(9, 63, 122, 0.2);
+  opacity: 0.18;
+  text-shadow: 0 7px 22px rgba(9, 63, 122, 0.1);
   user-select: none;
 }
 
-.letter-a { top: 16%; left: 3%; font-size: clamp(5rem, 12vw, 11rem); transform: rotate(-12deg); }
-.letter-b { top: 47%; left: 7%; font-size: clamp(3.5rem, 8vw, 7rem); transform: rotate(8deg); }
-.letter-c { bottom: 4%; left: 20%; font-size: clamp(4rem, 9vw, 8rem); transform: rotate(-5deg); }
-.letter-x { top: 13%; right: 7%; font-size: clamp(3.5rem, 8vw, 7rem); transform: rotate(9deg); }
-.letter-y { top: 44%; right: 3%; font-size: clamp(5rem, 11vw, 10rem); transform: rotate(-10deg); }
-.letter-z { bottom: 3%; right: 18%; font-size: clamp(4rem, 9vw, 8rem); transform: rotate(6deg); }
+.letter-a { top: 12%; left: 2%; color: #287dcc; font-size: clamp(5rem, 12vw, 11rem); transform: rotate(-12deg); }
+.letter-b { top: 39%; left: 5%; color: #e99725; font-size: clamp(3.5rem, 8vw, 7rem); transform: rotate(8deg); }
+.letter-c { bottom: 8%; left: 11%; color: #58a83f; font-size: clamp(4rem, 9vw, 8rem); transform: rotate(-5deg); }
+.letter-d { top: 17%; right: 9%; color: #9558bd; font-size: clamp(3.5rem, 8vw, 7rem); transform: rotate(9deg); }
+.letter-e { top: 45%; right: 2%; color: #19a7bd; font-size: clamp(5rem, 11vw, 10rem); transform: rotate(-10deg); }
+.letter-f { bottom: 5%; right: 13%; color: #dc5f85; font-size: clamp(4rem, 9vw, 8rem); transform: rotate(6deg); }
+.letter-g { top: 65%; left: 38%; color: #d4ab19; font-size: clamp(3rem, 7vw, 6rem); transform: rotate(-8deg); }
+.letter-h { top: 27%; left: 47%; color: #724bc2; font-size: clamp(3rem, 7vw, 6rem); transform: rotate(13deg); }
+.letter-hello,
+.letter-talk,
+.letter-english {
+  font-family: "Yu Gothic UI", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+.letter-hello { top: 8%; left: 24%; color: #1a78ba; font-size: clamp(2rem, 5vw, 4.5rem); transform: rotate(-5deg); }
+.letter-talk { bottom: 17%; right: 27%; color: #1a9b8a; font-size: clamp(2rem, 4.5vw, 4rem); transform: rotate(7deg); }
+.letter-english { top: 72%; right: 32%; color: #29528e; font-size: clamp(1.8rem, 4vw, 3.7rem); transform: rotate(-4deg); }
 
 .site-footer {
   position: relative;
@@ -714,8 +736,11 @@ form a:not(.site-brand):not(.site-header__reserve):hover {
 
 @media (max-width: 640px) {
   body {
-    background-position: 64% top;
-    background-attachment: scroll;
+    background: #edf7ff;
+  }
+
+  body::before {
+    background-position: 58% center;
   }
 
   .site-header {
@@ -829,7 +854,7 @@ form a:not(.site-brand):not(.site-header__reserve):hover {
   }
 
   .letter {
-    opacity: 0.5;
+    opacity: 0.1;
   }
 
   fieldset input[type="number"] {
