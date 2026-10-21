@@ -3,10 +3,35 @@
 {# トップ画面（仕様書「1 トップ画面」） #}
 
 {% block main %}
-<main>
-  {# TODO: 実装する（デザイン・学校の案内・お知らせ） #}
-  <h1>英会話学校予約システム</h1>
+<main class="top-page">
+  <section class="hero-section" aria-labelledby="page-heading">
+    <p class="eyebrow">WELCOME TO ENGLISH CLASS</p>
+    <h1 id="page-heading">英会話学校予約システム</h1>
+    <p class="hero-section__lead">講師・コース・日時を選び、オンラインでレッスンを予約できます。</p>
+    <a class="btn btn-primary" href="{{ base_url() }}search">今すぐ予約する</a>
+  </section>
 
-  <a href="{{ base_url() }}search">今すぐ予約する</a>
+  <section class="feature-grid" aria-label="予約の流れ">
+    <article class="feature-card">
+      <span class="feature-card__number">01</span>
+      <h2>レッスンを選択</h2>
+      <p>希望する講師・コース・日時を選択します。</p>
+    </article>
+    <article class="feature-card">
+      <span class="feature-card__number">02</span>
+      <h2>お客様情報を入力</h2>
+      <p>予約に必要な情報を入力し、内容を確認します。</p>
+    </article>
+    <article class="feature-card">
+      <span class="feature-card__number">03</span>
+      <h2>予約を確定</h2>
+      <p>最終確認後に予約を確定します。</p>
+    </article>
+  </section>
+
+  <aside class="notice-panel" aria-labelledby="notice-heading">
+    <h2 id="notice-heading">お知らせ</h2>
+    <p><time datetime="2026-10-21">2026年10月21日</time>　オンライン予約画面をスマートフォン表示に対応しました。</p>
+  </aside>
 </main>
 {% endblock main %}

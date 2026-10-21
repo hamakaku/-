@@ -8,10 +8,29 @@
 
 {% block main %}
   <main>
-    {# TODO: 実装する（デザイン・予約内容の表示） #}
     <h1>{{ title }}</h1>
+    <p class="page-lead">予約内容を確認し、予約方法を選択してください。</p>
 
-    <a href="{{ base_url() }}reserve/member">会員登録して予約へ</a>
-    <a href="{{ base_url() }}reserve/guest">会員登録せず予約へ</a>
+    <section class="card card-body mb-4" aria-labelledby="reservation-heading">
+      <h2 id="reservation-heading" class="h5">選択したレッスン</h2>
+      <dl class="row mb-0">
+        <dt class="col-sm-4">講師</dt><dd class="col-sm-8">{{ data.instructor.name }}</dd>
+        <dt class="col-sm-4">コース</dt><dd class="col-sm-8">{{ data.course.name }}</dd>
+        <dt class="col-sm-4">日時</dt><dd class="col-sm-8">{{ data.date.year }}年{{ data.date.month }}月{{ data.date.day }}日（{{ data.date.week }}） {{ data.time }}:00</dd>
+      </dl>
+    </section>
+
+    <div class="choice-grid">
+      <section class="choice-card">
+        <h2>会員登録して予約</h2>
+        <p>会員情報を登録してから予約を確定します。</p>
+        <a class="btn btn-primary" href="{{ base_url() }}reserve/member">会員登録して予約へ</a>
+      </section>
+      <section class="choice-card">
+        <h2>会員登録せずに予約</h2>
+        <p>予約に必要な基本情報のみを入力します。</p>
+        <a class="btn btn-outline-secondary" href="{{ base_url() }}reserve/guest">会員登録せず予約へ</a>
+      </section>
+    </div>
   </main>
 {% endblock main %}

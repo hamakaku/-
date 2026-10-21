@@ -5,6 +5,12 @@
 {% block main %}
   {% autoescape 'html' %}
     <main class="container py-5" style="max-width: 800px;">
+      <ol class="progress-steps" aria-label="予約手続きの進捗">
+        <li class="is-complete"><span>1</span>情報入力</li>
+        <li class="is-current" aria-current="step"><span>2</span>入力確認</li>
+        <li><span>3</span>予約確認</li>
+        <li><span>4</span>予約完了</li>
+      </ol>
       <h1>会員登録情報の確認</h1>
       <p>入力内容を確認してください。</p>
       <dl class="row">
@@ -20,8 +26,10 @@
         <dt class="col-sm-4">パスワード</dt><dd class="col-sm-8">設定済み（安全のため表示しません）</dd>
       </dl>
 
-      <a href="{{ base_url() }}reserve/member">修正する</a>
-      <a href="{{ base_url() }}reserve/member/confirm">予約確認に進む</a>
+      <div class="form-actions">
+        <a class="btn btn-outline-secondary" href="{{ base_url() }}reserve/member">修正する</a>
+        <a class="btn btn-primary" href="{{ base_url() }}reserve/member/confirm">予約確認に進む</a>
+      </div>
     </main>
   {% endautoescape %}
 {% endblock main %}

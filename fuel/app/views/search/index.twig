@@ -11,44 +11,50 @@
 
 {% block main %}
 <main>
-  {# TODO: 実装する（デザイン） #}
   <h1>{{ title }}</h1>
+  <p class="page-lead">ご希望の講師・コース・日時を選択してください。</p>
 
   {% if errors is defined and errors %}
-    {% for message in errors %}<p>{{ message }}</p>{% endfor %}
+    <div class="alert alert-danger" role="alert">
+      <p class="alert-heading">選択内容を確認してください。</p>
+      {% for message in errors %}<p>{{ message }}</p>{% endfor %}
+    </div>
   {% endif %}
 
-  <form action="{{ base_url() }}reserve" method="post">
-    <p>
-      講師
-      <select name="instructorId">
+  <form action="{{ base_url() }}reserve" method="post" class="reservation-form">
+    <div class="form-group">
+      <label for="instructorId">講師</label>
+      <select id="instructorId" name="instructorId" class="form-select" required>
         {% for instructor in instructors %}
-        <option value="{{ instructor.id }}">{{ instructor.name }}</option>
+        <option value="{{ instructor.id }}" {% if input.instructorId|default('') == instructor.id %}selected{% endif %}>{{ instructor.name }}</option>
         {% endfor %}
       </select>
-    </p>
-    <p>
-      コース
-      <select name="course">
+    </div>
+    <div class="form-group">
+      <label for="course">コース</label>
+      <select id="course" name="course" class="form-select" required>
         {% for course in courses %}
-        <option value="{{ course.id }}">{{ course.name }}</option>
+        <option value="{{ course.id }}" {% if input.course|default('') == course.id %}selected{% endif %}>{{ course.name }}</option>
         {% endfor %}
       </select>
-    </p>
-    <p>
-      予約日
-      <input type="date" name="date" min="{{ min_date }}" max="{{ max_date }}" value="{{ min_date }}">
-    </p>
-    <p>
-      時間
-      <select name="time">
+    </div>
+    <div class="form-group">
+      <label for="date">予約日</label>
+      <input id="date" class="form-control" type="date" name="date" min="{{ min_date }}" max="{{ max_date }}" value="{{ input.date|default(min_date) }}" required>
+      <p class="form-text">翌日から来月末まで選択できます。</p>
+    </div>
+    <div class="form-group">
+      <label for="time">時間</label>
+      <select id="time" name="time" class="form-select" required>
         {% for i in 9..20 %}
-        <option value="{{ i }}">{{ i }}:00</option>
+        <option value="{{ i }}" {% if input.time|default('') == i %}selected{% endif %}>{{ i }}:00</option>
         {% endfor %}
       </select>
-    </p>
+    </div>
 
-    <button type="submit">予約へ進む</button>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">予約へ進む</button>
+    </div>
   </form>
 </main>
 {% endblock main %}

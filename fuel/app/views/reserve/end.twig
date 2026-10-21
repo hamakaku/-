@@ -7,15 +7,24 @@
 #}
 
 {% block main %}
-  <main>
-    {# TODO: 実装する（デザイン） #}
+  <main class="completion-page">
+    <ol class="progress-steps" aria-label="予約手続きの進捗">
+      <li class="is-complete"><span>1</span>情報入力</li>
+      <li class="is-complete"><span>2</span>入力確認</li>
+      <li class="is-complete"><span>3</span>予約確認</li>
+      <li class="is-current" aria-current="step"><span>4</span>予約完了</li>
+    </ol>
+    <div class="completion-mark" aria-hidden="true">✓</div>
     <h1>{{ title }}</h1>
 
-    <p>予約完了しました。</p>
+    <p class="completion-message">予約が完了しました。</p>
     {% if reserve_id is defined and reserve_id %}
-      <p>予約番号：{{ reserve_id }}</p>
+      <p class="reservation-number"><span>予約番号</span><strong>{{ reserve_id }}</strong></p>
     {% endif %}
+    <p class="text-muted">ご予約いただきありがとうございます。</p>
 
-    <a href="{{ base_url() }}">TOPへ戻る</a>
+    <div class="form-actions form-actions--center">
+      <a class="btn btn-primary" href="{{ base_url() }}">トップへ戻る</a>
+    </div>
   </main>
 {% endblock main %}

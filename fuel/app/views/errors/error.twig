@@ -3,10 +3,13 @@
 {# エラー画面 #}
 
 {% block main %}
-<main>
-  <p>エラー　もう一度やり直してください。</p>
-  <a href="{{ base_url() }}">トップへ</a>
-
-  {# TODO: デザイン #}
+<main class="error-page">
+  <div class="error-mark" aria-hidden="true">!</div>
+  <h1>エラーが発生しました</h1>
+  <p>処理を完了できませんでした。</p>
+  <p class="text-muted">お手数ですが、トップページからもう一度操作してください。</p>
+  <div class="form-actions form-actions--center">
+    <a class="btn btn-primary" href="{{ base_url() }}">トップへ戻る</a>
+  </div>
 </main>
 {% endblock main %}

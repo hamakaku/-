@@ -9,14 +9,45 @@
 
 {% block main %}
 <main>
-  {# TODO: 実装する（デザイン・予約内容と予約者情報の表示・ご要望の入力） #}
+  <ol class="progress-steps" aria-label="予約手続きの進捗">
+    <li class="is-complete"><span>1</span>情報入力</li>
+    <li class="is-complete"><span>2</span>入力確認</li>
+    <li class="is-current" aria-current="step"><span>3</span>予約確認</li>
+    <li><span>4</span>予約完了</li>
+  </ol>
   <h1>{{ title }}</h1>
+  <p class="page-lead">内容を確認して「予約する」を押してください。</p>
+
+  <section class="card card-body mb-4" aria-labelledby="reservation-heading">
+    <h2 id="reservation-heading" class="h5">予約内容</h2>
+    <dl class="row mb-0">
+      <dt class="col-sm-4">講師</dt><dd class="col-sm-8">{{ data.instructor.name }}</dd>
+      <dt class="col-sm-4">コース</dt><dd class="col-sm-8">{{ data.course.name }}</dd>
+      <dt class="col-sm-4">日時</dt><dd class="col-sm-8">{{ data.date.year }}年{{ data.date.month }}月{{ data.date.day }}日（{{ data.date.week }}） {{ data.time }}:00</dd>
+    </dl>
+  </section>
+
+  <section class="card card-body mb-4" aria-labelledby="guest-heading">
+    <h2 id="guest-heading" class="h5">予約者情報</h2>
+    <dl class="row mb-0">
+      <dt class="col-sm-4">フリガナ</dt><dd class="col-sm-8">{{ userData.familyName_kana }} {{ userData.givenName_kana }}</dd>
+      <dt class="col-sm-4">メールアドレス</dt><dd class="col-sm-8">{{ userData.email }}</dd>
+      <dt class="col-sm-4">電話番号</dt><dd class="col-sm-8">{{ userData.tel }}</dd>
+    </dl>
+  </section>
 
   <form action="{{ base_url() }}reserve/guest/end" method="post">
     <input type="hidden" name="{{ csrf.key }}" value="{{ csrf.token }}">
 
-    <a href="{{ base_url() }}search">中止する</a>
-    <button type="submit">予約する</button>
+    <div class="form-group mb-4">
+      <label for="opinion">ご要望・ご意見</label>
+      <textarea id="opinion" name="opinion" class="form-control" rows="5"></textarea>
+    </div>
+
+    <div class="form-actions">
+      <a class="btn btn-outline-secondary" href="{{ base_url() }}search">中止する</a>
+      <button type="submit" class="btn btn-primary">予約する</button>
+    </div>
   </form>
 </main>
 {% endblock main %}

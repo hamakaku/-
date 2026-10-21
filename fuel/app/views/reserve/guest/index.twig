@@ -10,21 +10,56 @@
 
 {% block main %}
 <main>
-  {# TODO: 実装する（デザイン・予約内容の表示・残りの入力項目・エラー表示） #}
+  <ol class="progress-steps" aria-label="予約手続きの進捗">
+    <li class="is-current" aria-current="step"><span>1</span>情報入力</li>
+    <li><span>2</span>入力確認</li>
+    <li><span>3</span>予約確認</li>
+    <li><span>4</span>予約完了</li>
+  </ol>
   <h1>{{ title }}</h1>
+  <p class="page-lead">予約に必要な基本情報を入力してください。</p>
+
+  <section class="card card-body mb-4" aria-labelledby="reservation-heading">
+    <h2 id="reservation-heading" class="h5">予約内容</h2>
+    <dl class="row mb-0">
+      <dt class="col-sm-4">講師</dt><dd class="col-sm-8">{{ data.instructor.name }}</dd>
+      <dt class="col-sm-4">コース</dt><dd class="col-sm-8">{{ data.course.name }}</dd>
+      <dt class="col-sm-4">日時</dt><dd class="col-sm-8">{{ data.date.year }}年{{ data.date.month }}月{{ data.date.day }}日（{{ data.date.week }}） {{ data.time }}:00</dd>
+    </dl>
+  </section>
 
   {% if errors is defined and errors %}
-    {% for message in errors %}<p>{{ message }}</p>{% endfor %}
+    <div class="alert alert-danger" role="alert">
+      <p class="alert-heading">入力内容を確認してください。</p>
+      {% for message in errors %}<p>{{ message }}</p>{% endfor %}
+    </div>
   {% endif %}
 
-  <form action="{{ base_url() }}reserve/guest/check" method="post">
-    <p>セイ <input type="text" name="familyName_kana" value="{{ userData.familyName_kana|default('') }}"></p>
-    <p>メイ <input type="text" name="givenName_kana" value="{{ userData.givenName_kana|default('') }}"></p>
-    <p>Email <input type="email" name="email" value="{{ userData.email|default('') }}"></p>
-    <p>Email（確認用） <input type="email" name="email2" value="{{ userData.email2|default('') }}"></p>
-    <p>電話番号 <input type="tel" name="tel" value="{{ userData.tel|default('') }}"></p>
+  <form action="{{ base_url() }}reserve/guest/check" method="post" class="vstack gap-3">
+    <div class="form-group">
+      <label for="familyName_kana">セイ（必須）</label>
+      <input id="familyName_kana" class="form-control" type="text" name="familyName_kana" maxlength="16" required value="{{ userData.familyName_kana|default('') }}">
+    </div>
+    <div class="form-group">
+      <label for="givenName_kana">メイ（必須）</label>
+      <input id="givenName_kana" class="form-control" type="text" name="givenName_kana" maxlength="16" required value="{{ userData.givenName_kana|default('') }}">
+    </div>
+    <div class="form-group">
+      <label for="email">メールアドレス（必須）</label>
+      <input id="email" class="form-control" type="email" name="email" maxlength="255" required value="{{ userData.email|default('') }}">
+    </div>
+    <div class="form-group">
+      <label for="email2">メールアドレス・確認用（必須）</label>
+      <input id="email2" class="form-control" type="email" name="email2" maxlength="255" required value="{{ userData.email2|default('') }}">
+    </div>
+    <div class="form-group">
+      <label for="tel">電話番号・ハイフンなし（必須）</label>
+      <input id="tel" class="form-control" type="tel" name="tel" maxlength="20" required value="{{ userData.tel|default('') }}">
+    </div>
 
-    <button type="submit">確認画面へ</button>
+    <div class="form-actions mt-4">
+      <button type="submit" class="btn btn-primary">確認画面へ</button>
+    </div>
   </form>
 </main>
 {% endblock main %}

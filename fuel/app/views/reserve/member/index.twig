@@ -4,6 +4,13 @@
   {% autoescape 'html' %}
     <main class="container py-5" style="max-width: 800px;">
 
+      <ol class="progress-steps" aria-label="予約手続きの進捗">
+        <li class="is-current" aria-current="step"><span>1</span>情報入力</li>
+        <li><span>2</span>入力確認</li>
+        <li><span>3</span>予約確認</li>
+        <li><span>4</span>予約完了</li>
+      </ol>
+
       <h1>会員登録情報入力</h1>
       <p class="text-muted">必須の項目を入力し、確認画面へ進んでください。</p>
       {% if data %}
@@ -259,9 +266,9 @@
           </select>
         </div>
 
-        <button type="submit" class="btn btn-primary mt-4">
-          確認画面へ
-        </button>
+        <div class="form-actions mt-4">
+          <button type="submit" class="btn btn-primary">確認画面へ</button>
+        </div>
 
       </form>
     </main>
